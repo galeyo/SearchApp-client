@@ -1,4 +1,4 @@
-import { IAircraft, IAircraftEnvelope } from './../models/aircraft';
+import { IAircraftEnvelope } from './../models/aircraft';
 import axios, { AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 import { history } from '../../index';

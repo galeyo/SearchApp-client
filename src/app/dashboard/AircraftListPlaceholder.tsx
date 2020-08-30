@@ -1,12 +1,12 @@
-import React, { Fragment, useContext } from 'react';
+import React from 'react';
 import { Placeholder, Segment, Grid } from 'semantic-ui-react';
 
 const AircraftListPlaceholder = () => {
 	return (
 		<Grid>
 			<Grid.Row columns={3}>
-				{[0,0,0,0,0,0,0,0,0].map((a, i) => (
-					<Grid.Column key={i} width={5} stretched>
+				{Array(9).fill(0).map((a, i) => (
+					<Grid.Column key={i} computer={5} mobile={16} stretched>
 						<Segment key={i} style={{ marginBottom: '1.5em' }}>
 							<Placeholder style={{ marginBottom: '1em' }}>
 								<Placeholder.Image />

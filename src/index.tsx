@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import App from './app/layout/App';
 import './app/layout/style.css';
+import '@elastic/react-search-ui-views/lib/styles/styles.css';
 
 export const history = createBrowserHistory();
 ReactDOM.render(

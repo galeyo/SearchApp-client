@@ -1,7 +1,7 @@
 import React from 'react';
-import { Search } from 'semantic-ui-react';
+import { ReactiveBase } from '@appbaseio/reactivesearch';
 const SearchComponent: React.FC = () => {
-	return <Search input={{fluid: true}} fluid/>;
+	return <ReactiveBase app='aircrafts' />;
 };
 
 export default SearchComponent;

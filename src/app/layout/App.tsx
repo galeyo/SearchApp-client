@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import HomePage from '../home/HomePage';
 import { Route } from 'react-router-dom';
@@ -7,6 +7,7 @@ import NavBar from '../nav/NavBar';
 import { RootStoreContext } from '../stores/rootStore';
 import LoadingComponent from './LoadingComponent';
 import { observer } from 'mobx-react-lite';
+import 'mobx-react-lite/batchingForReactDom'
 import { Container } from 'semantic-ui-react';
 
 const App: React.FC<RouteComponentProps> = () => {
@@ -17,7 +18,7 @@ const App: React.FC<RouteComponentProps> = () => {
 	useEffect(() => {
 		setAppLoaded();
 		history.push('/aircrafts');
-	}, [setAppLoaded]);
+	}, [setAppLoaded, history]);
 
 	if (!appLoaded) return <LoadingComponent content='Loading app ...' />;
 

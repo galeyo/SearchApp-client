@@ -8,7 +8,6 @@ import React, {
 import { RootStoreContext } from '../stores/rootStore';
 import {
 	Grid,
-	Segment,
 	Pagination,
 	PaginationProps,
 	Ref,
@@ -39,8 +38,7 @@ const AircraftDashboard: React.FC = () => {
 	useEffect(() => {
 		loadAircrafts();
 	}, [loadAircrafts]);
-	console.log(loadingInitial);
-
+	
 	return (
 		<Grid columns={4}>
 			<Ref innerRef={contextRef}>
@@ -57,7 +55,6 @@ const AircraftDashboard: React.FC = () => {
 					<Fragment>
 						<AircraftList />
 						<Pagination
-							defaultActivePage={1}
 							totalPages={totalPages}
 							onPageChange={handleNext}
 							activePage={activePage}

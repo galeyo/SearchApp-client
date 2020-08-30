@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { RootStoreContext } from '../stores/rootStore';
-import { Menu, Container, Grid } from 'semantic-ui-react';
+import React from 'react';
+import { Menu, Grid } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import SearchComponent from './SearchComponent';
 const NavBar: React.FC = () => {
-	const rootStore = useContext(RootStoreContext);
 	return (
 		<Menu fixed='top' inverted>
 			<Grid container columns={2}>

@@ -1,20 +1,15 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import {
-	Item,
-	Image,
-	LabelGroup,
 	Label,
 	Segment,
 	Grid,
+	Image,
+	Header,
 } from 'semantic-ui-react';
 import { RootStoreContext } from '../stores/rootStore';
 import { IAircraft } from '../models/aircraft';
 import { observer } from 'mobx-react-lite';
 import ShowMoreText from 'react-show-more-text';
-
-const style = {
-	padding: '0.3em'
-}
 
 const AircraftList = () => {
 	const rootStore = useContext(RootStoreContext);
@@ -24,46 +19,69 @@ const AircraftList = () => {
 			<Grid.Row columns={3}>
 				{aircrafts &&
 					aircrafts.map((item: IAircraft, i) => (
-						<Grid.Column key={i} width={5} stretched>
-							<Segment style={{ marginBottom: '1.5em' }}>
-								<Item>
-									<Item.Image size='massive' src={item.image} />
-									<Item.Content>
-										<Item.Header as='a' style={{ fontSize: '1.2em' }}>
-											{item.aircraftName}
-										</Item.Header>
-										<Item.Header>
-											Year in service: <Label style={style}>{item.yearInService}</Label>
-										</Item.Header>
-										<Item.Header>
-											Country: <Label style={style}>{item.country}</Label>
-										</Item.Header>
-										<Item.Meta>Description</Item.Meta>
-										<Item.Description>
-											<ShowMoreText
-												lines={3}
-												more='Show more'
-												less='Show less'
-												expanded={false}
-											>
-												{item.description}
-												<br />
-											</ShowMoreText>
-										</Item.Description>
-										<Item.Meta>Category:</Item.Meta>
+						<Grid.Column key={i} computer={5} mobile={16}>
+							<Header
+								as='a'
+								color='blue'
+								textAlign='center'
+								attached='top'
+								block
+								className='item-header'>
+								{item.aircraftName}
+							</Header>
+							<Segment attached className='aircraft'>
+								<Grid.Row className='content'>
+									<Image src={item.image} fluid bordered />
+									<Grid.Column>
+										<b>Year in service: </b>
+										<Label className='item-label'>
+											{item.yearInService}
+										</Label>
+									</Grid.Column>
+									<Grid.Column>
+										<b>Country: </b>
+										<Label className='item-label'>
+											{item.country}
+										</Label>
+									</Grid.Column>
+									<Grid.Column>
+										<b>Description: </b>
+										<ShowMoreText
+											lines={3}
+											more='Show more'
+											less='Show less'
+											expanded={false}>
+											{item.description}
+											<br />
+										</ShowMoreText>
+									</Grid.Column>
+									<Grid.Column>
+										<b>Category:</b>
 										<Label.Group>
 											{item.categories &&
 												item.categories.map((c, i) => (
-													<Label  style={style} key={i}>{c}</Label>
+													<Label
+														className='item-label'
+														key={i}>
+														{c}
+													</Label>
 												))}
 										</Label.Group>
-										<Item.Meta>Types:</Item.Meta>
+									</Grid.Column>
+									<Grid.Column>
+										<b>Types:</b>
 										<Label.Group>
 											{item.types &&
-												item.types.map((t, i) => <Label  style={style} key={i}>{t}</Label>)}
+												item.types.map((t, i) => (
+													<Label
+														className='item-label'
+														key={i}>
+														{t}
+													</Label>
+												))}
 										</Label.Group>
-									</Item.Content>
-								</Item>
+									</Grid.Column>
+								</Grid.Row>
 							</Segment>
 						</Grid.Column>
 					))}
